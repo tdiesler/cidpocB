@@ -1,7 +1,10 @@
 package org.fuse.cidpoc.test;
 
-import org.fuse.cidpoc.a.Item;
-import org.fuse.cidpoc.a.Utils;
+import java.util.List;
+
+import org.fuse.cidpoc.Item;
+import org.fuse.cidpoc.Item.Capability;
+import org.fuse.cidpoc.Item.Requirement;
 import org.fuse.cidpoc.b.B;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,8 +17,18 @@ public class BTest {
         Item item = new B();
         item.transitiveStatus();
         
-        String version = Utils.getVersion(item.getClass());
-        String status = Utils.getStatus(item.getClass());
-        Assert.assertEquals("B-" + version + " is " + status, item.getMessage());
+        List<Item> deps = item.getDependencies();
+        Assert.assertEquals(0, deps.size());
+
+        Capability cap = item.getCapability();
+        Assert.assertEquals("B", cap.getName());
+        Assert.assertTrue(cap.getValue() > 0);
+        
+        List<Requirement> reqs = item.getRequirements();
+        Assert.assertEquals(0, reqs.size());
+
+        String version = Item.getVersion(item.getClass());
+        Assert.assertEquals("B-" + version, item.getVName());
+        Assert.assertEquals("is satisfied", item.getStatus());
     }
 }

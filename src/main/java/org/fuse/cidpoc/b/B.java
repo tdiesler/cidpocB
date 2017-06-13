@@ -1,17 +1,19 @@
 package org.fuse.cidpoc.b;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-import org.fuse.cidpoc.a.A;
-import org.fuse.cidpoc.a.Item;
+import org.fuse.cidpoc.Item;
 
-public class B implements Item {
-
-    Item[] deps = new Item[] { new A() };
+public class B extends Item {
 
     @Override
-    public List<Item> getDependecies() {
-        return Arrays.asList(deps);
+    public Capability getCapability() {
+        return new Capability("B", 3);
+    }
+
+    @Override
+    public List<Item> getDependencies() {
+        return Collections.emptyList();
     }
 }

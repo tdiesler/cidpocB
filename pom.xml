@@ -2,9 +2,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.fuse.cidpoc</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0.0</version>
+        <groupId>org.jboss.cidpoc</groupId>
+        <artifactId>cidpoc-parent</artifactId>
+        <version>1.0.0.Alpha1</version>
     </parent>
 
     <artifactId>projB</artifactId>
@@ -23,7 +23,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.fuse.cidpoc</groupId>
+            <groupId>org.jboss.cidpoc</groupId>
             <artifactId>projA</artifactId>
             <version>${version.cidpoc.a}</version>
         </dependency>
@@ -43,4 +43,11 @@
         </resources>
     </build>
 
+    <repositories>
+        <repository>
+            <id>jboss-releases</id>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+    
 </project>
